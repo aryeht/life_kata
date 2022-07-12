@@ -4,8 +4,8 @@
 
 ### Random starting state
 
-printed out is the state of the board followed by the count of alive neighbors
-edge pixels use mirrored values (first line's upper neighbors is last line, last column's right neighbor is first column)
+* printed out is the state of the board followed by the count of alive neighbors
+* edge pixels use mirrored values (first line's upper neighbors is last line, last column's right neighbor is first column)
 
 ```
 PASSED                                       [ 50%]input:
