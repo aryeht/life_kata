@@ -16,7 +16,7 @@ class Life:
     def __repr__(self):
         return '\n'.join([
             pformat(self._life_board),
-            pformat(self._live_neighbors)
+            # pformat(self._live_neighbors)
         ])
 
     def size(self):
@@ -55,16 +55,18 @@ class Life:
         for i in range(self.sizex):
             for j in range(self.sizey):
                 curr_cell = output.get(i, j)
-                if curr_cell and output.live_neighbors(i, j) in [2, 3]:
-                    output.set(i, j, 0)
-                elif output.live_neighbors(i, j) == 3:
+                neighbors_count = output.live_neighbors(i, j)
+                if curr_cell and neighbors_count in [2, 3]:
                     output.set(i, j, 1)
+                    print(f"Cell {i},{j} ({curr_cell}) with {neighbors_count} live neighbors survives")
+                elif neighbors_count == 3:
+                    output.set(i, j, 1)
+                    print(f"Dead cell {i},{j} ({curr_cell}) with {neighbors_count} live neighbors revived")
                 else:
                     output.set(i, j, 0)
         return output
 
 
 if __name__ == '__main__':
-
     life = Life(5, 5)
     pprint(life._life_board)

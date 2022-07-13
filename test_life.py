@@ -3,11 +3,11 @@ Any live cell with two or three live neighbours survives.
 Any dead cell with three live neighbours becomes a live cell.
 All other live cells die in the next generation. Similarly, all other dead cells stay dead.
 """
-from run_life import Life
+from life import Life
 
 
-def test_run_life():
-    input = Life(15, 15)
+def test_life():
+    input = Life(9, 9)
     print('input:')
     print(input)
     output = input.run_life()
@@ -26,9 +26,9 @@ def test_run_life():
                     ((not curr_prev_cell) and input.live_neighbors(i, j) == 3)
             # All other live cells die in the next generation. Similarly, all other dead cells stay dead.
             else:
-                assert not curr_new_cell, "cell did not stay dead"
+                assert not curr_new_cell, "cell should not be alive"
 
 
-def test_run_life_neighbors():
+def test_life_neighbors():
     input = Life(3, 3, [[False, False, False], [False, True, True], [False, True, True]])
     assert input._live_neighbors[1][1] == 3
